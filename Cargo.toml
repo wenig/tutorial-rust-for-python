@@ -12,7 +12,6 @@ python = ["pyo3", "numpy"]
 
 [dependencies]
 ndarray = "0.15.6"
-piston-float = "1.0.1"
 
 pyo3 = { version = "0.16.5", features = ["extension-module"], optional = true }
 numpy = { version = "0.16.2", optional = true }
