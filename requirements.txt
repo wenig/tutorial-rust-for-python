@@ -1,3 +1,4 @@
 maturin==0.13.5
 numpy==1.23.3
 pandas
+sklearn

@@ -26,19 +26,18 @@ class PythonKNN(KNN):
         return self
 
     def transform(self, X: np.ndarray) -> np.ndarray:
-        closest = []
         predicted = np.zeros(X.shape[0])
 
         for j in range(X.shape[0]):
+            closest = []
             for i in range(self._X.shape[0]):
-                distance = np.linalg.norm(X[j] - self._X[i])
+                distance = float(np.linalg.norm(X[j] - self._X[i]))
                 if len(closest) < self.k:
                     closest.append((distance, self._y[i]))
-                elif distance < max(closest, key=lambda x: x[0]):
-                    closest = sorted(closest)[:-1]
-                    closest.append((distance, self._y[i]))
-
-            predicted[j] = Counter(map(lambda x: x[0], closest)).most_common(1)[0][0]
+                elif distance < max(closest, key=lambda x: x[0])[0]:
+                    max_position = closest.index(max(closest, key=lambda x: x[0]))
+                    closest[max_position] = (distance, self._y[i])
+            predicted[j] = Counter(map(lambda x: x[1], closest)).most_common(1)[0][0]
         return predicted
 
     def fit_transform(self, X: np.ndarray, y: np.ndarray) -> np.ndarray:
@@ -51,4 +50,4 @@ class RustKNN(KNN):
         self.k = k
 
     def fit_transform(self, X: np.ndarray, y: np.ndarray) -> np.ndarray:
-        return knn_algorithm(X, y)
+        return knn_algorithm(X, y, self.k)
