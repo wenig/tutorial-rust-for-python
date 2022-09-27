@@ -100,7 +100,12 @@ The generated `wheel` is compiled for your specific operating system only. If yo
 
 ## Steps to Reproduce
 
-### 0. Create a new Python environment
+### 0. Clone repo and create a new Python environment
+
+```shell
+git clone https://github.com/wenig/tutorial-rust-for-python.git
+cd tutorial-rust-for-python
+```
 
 For example:
 ```shell
