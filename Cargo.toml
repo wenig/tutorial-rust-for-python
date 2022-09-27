@@ -1,0 +1,15 @@
+[package]
+name = "tutorial-rust-for-python"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "knn_rs"
+crate-type = ["cdylib", "rlib"]
+
+[features]
+python = ["pyo3", "numpy"]
+
+[dependencies]
+pyo3 = { version = "0.16.5", features = ["extension-module"], optional = true }
+numpy = { version = "0.16.2", optional = true }
