@@ -94,6 +94,10 @@ class RustKNN(KNN):
         return knn_algorithm(X, y, self.k)
 ```
 
+### Important to know
+
+The generated `wheel` is compiled for your specific operating system only. If you want to generate a generic version (e.g. _manylinux_), it is easiest to work with Docker containers or toolchains for your target system ([more here](https://pyo3.rs/v0.8.1/building_and_distribution.html#cross-compiling)).
+
 ## Steps to Reproduce
 
 ### 0. Create a new Python environment
